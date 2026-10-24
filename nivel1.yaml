@@ -1,0 +1,23 @@
+#cloud-config
+package_update: true
+
+packages:
+  - nginx
+
+write_files:
+  - path: /var/www/html/index.html
+    content: |
+      <!DOCTYPE html>
+      <html>
+      <head>
+          <title>Laboratorio Cloud-init - Nivel 1</title>
+      </head>
+      <body>
+          <h1>Bem-vindo ao Servidor Web Estatico com Cloud-init!</h1>
+          <p>Esta pagina foi gerada automaticamente no primeiro boot da instancia.</p>
+      </body>
+      </html>
+    permissions: '0644'
+
+runcmd:
+  - systemctl restart nginx
